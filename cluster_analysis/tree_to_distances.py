@@ -7,7 +7,7 @@
 from Bio import Phylo
 from itertools import combinations
 
-tree = Phylo.read("tree-file.nwk"), 'newick')
+tree = Phylo.read("tree-file.nwk", 'newick')
 seq_names = tree.get_terminals()
 dmat = {}
 for p1, p2 in combinations(seq_names, 2):
