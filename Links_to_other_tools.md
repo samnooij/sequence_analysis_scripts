@@ -1,4 +1,4 @@
-# Links to other tools that I use/have used
+# Links to other tools that I have used
 
  - [Anaconda](https://www.anaconda.com/download/#linux)
  - [BioConda](https://bioconda.github.io/)
