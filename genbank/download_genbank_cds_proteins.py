@@ -34,21 +34,22 @@ with open(output_file, 'w') as fasta:
     for record in records:
         name = record["GBSeq_primary-accession"]
         protein_sequence = ''
-        for cds in record["GBSeq_feature-table"][1:]:
-            for entry in cds["GBFeature_quals"]:
-                if entry["GBQualifier_name"] == "translation":
-                    translation = entry["GBQualifier_value"]
-                elif entry["GBQualifier_name"] == "product":
-                    protein_name = entry["GBQualifier_value"]
-                elif entry["GBQualifier_name"] == "protein_id":
-                    protein_id = entry["GBQualifier_value"]
-                else:
-                    pass
-            #The protein names and accession IDs are also
-            # written to the fasta file, so these may be
-            # used later on.
-            name += "-%s[%s]" % (protein_name, protein_id)
-            protein_sequence += translation
+        for feature in record["GBSeq_feature-table"]:
+            if feature["GBFeature_key"] == "CDS":
+                for entry in feature["GBFeature_quals"]:
+                    if entry["GBQualifier_name"] == "translation":
+                        translation = entry["GBQualifier_value"]
+                    elif entry["GBQualifier_name"] == "product":
+                        protein_name = entry["GBQualifier_value"]
+                    elif entry["GBQualifier_name"] == "protein_id":
+                        protein_id = entry["GBQualifier_value"]
+                    else:
+                        pass
+                #The protein names and accession IDs are also
+                # written to the fasta file, so these may be
+                # used later on.
+                name += "-%s[%s]" % (protein_name, protein_id)
+                protein_sequence += translation
         fasta.write(">%s\n" % name)
         fasta.write(textwrap.fill("%s" % protein_sequence, width = 60))
         fasta.write('\n')
