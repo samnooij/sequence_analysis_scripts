@@ -34,10 +34,19 @@ with open(output_file, 'w') as fasta:
     for record in records:
         name = record["GBSeq_primary-accession"]
         protein_sequence = ''
-        for cds in records[0]["GBSeq_feature-table"][1:]:
-            translation = cds["GBFeature_quals"][-1]["GBQualifier_value"]
-            protein_name = cds["GBFeature_quals"][2]["GBQualifier_value"]
-            protein_id = cds["GBFeature_quals"][3]["GBQualifier_value"]
+        for cds in record["GBSeq_feature-table"][1:]:
+            for entry in cds["GBFeature_quals"]:
+                if entry["GBQualifier_name"] == "translation":
+                    translation = entry["GBQualifier_value"]
+                elif entry["GBQualifier_name"] == "product":
+                    protein_name = entry["GBQualifier_value"]
+                elif entry["GBQualifier_name"] == "protein_id":
+                    protein_id = entry["GBQualifier_value"]
+                else:
+                    pass
+            #The protein names and accession IDs are also
+            # written to the fasta file, so these may be
+            # used later on.
             name += "-%s[%s]" % (protein_name, protein_id)
             protein_sequence += translation
         fasta.write(">%s\n" % name)
