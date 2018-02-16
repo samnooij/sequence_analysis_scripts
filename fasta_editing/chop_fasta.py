@@ -9,7 +9,7 @@ EXAMPLE USE:
 python chop_fasta.py virus_sequences.fasta 100
 
 Author: S. Nooij
-Email: sam.nooij@rivm.nl
+Email: sam.nooij [at] rivm [dot] nl
 creation date: 27-11-2015
 '''
 

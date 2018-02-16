@@ -3,7 +3,7 @@
 
 # Author: Sam Nooij
 # Date: 12 Oct 2017
-# Email: sam.nooij@rivm.nl
+# Email: sam.nooij [at] rivm [dot] nl
 
 library('seqinr')
 

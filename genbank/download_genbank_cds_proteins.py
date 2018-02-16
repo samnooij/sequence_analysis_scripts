@@ -14,7 +14,7 @@ from Bio.Seq import Seq
 import pandas as pd
 import textwrap
 
-Entrez.email = "sam.nooij@rivm.nl" #Tell NCBI who you are!
+Entrez.email = "[enter your email address]" #Tell NCBI who you are!
 
 # Define required files: input and output
 filename = argv[1] #first command line argument

@@ -2,7 +2,7 @@
 
 #Date: 04-03-2016
 #Author: S.Nooij
-#Email: sam.nooij@rivm.nl
+#Email: sam.nooij [at] rivm [dot] nl
 
 from oldowan.genbank import iterate_genbank
 from Bio import SeqIO

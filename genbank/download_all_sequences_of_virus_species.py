@@ -1,7 +1,7 @@
 #! /usr/bin/python
 
 #Author: Sam Nooij
-#Email: sam.nooij@rivm.nl
+#Email: sam.nooij [at] rivm [dot] nl
 #Date: 28-11-2016
 
 from __future__ import print_function
@@ -15,7 +15,7 @@ from Bio import Entrez
 
 
 VIRUS_OF_INTEREST = "mumps virus"
-EMAIL_ADDRESS = "sam.nooij@rivm.nl"
+EMAIL_ADDRESS = "[enter your email address]"
 #These are now hard-coded, but maybe it is nicer to
 # move them to a config file or something.
 

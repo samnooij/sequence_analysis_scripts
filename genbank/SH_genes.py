@@ -2,7 +2,7 @@
 
 #Date: 22-02-2016
 #Author: S.Nooij
-#Email: sam.nooij@rivm.nl
+#Email: sam.nooij [at] rivm [dot] nl
 
 #Update: 2-3-2016
 
