@@ -100,14 +100,20 @@ def extract_features(inputfile, start_locus, end_locus):
         
         print("Original sequence length: %s bp" % len(original_sequence))
         
+        # Use silly work-around to try and get one copy of the first and last feature...
         start_found = False
+        delay = 0
         
         for feature in record.features:
-            if start_found:
+            if delay == 1 and not start_found:
+                features_of_interest.append(modify_feature(feature, start_position))
+                delay -= 1
+            elif start_found:
                 features_of_interest.append(modify_feature(feature, start_position))
             else:
                 pass
-    
+
+
             for key, value in feature.qualifiers.items():
                 if key == "locus_tag" and value[0] == start_locus:
                     start_position = int(feature.location.start)
@@ -117,15 +123,15 @@ def extract_features(inputfile, start_locus, end_locus):
                     features_of_interest.append(modify_feature(feature, start_position))
                     
                     start_found = True
+                    delay = 1
                 
                 if start_found and key == "locus_tag" and value[0] == end_locus:
                     end_position = int(feature.location.end)
                     
-                    features_of_interest.append(modify_feature(feature, start_position))
-                    
                     start_found = False
+                    delay = 1
                     break
-    
+
         try:
             extracted_sequence = original_sequence[start_position:end_position]
             print("Extracted sequence length: %s bp" % len(extracted_sequence))
