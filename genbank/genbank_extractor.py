@@ -148,9 +148,10 @@ def extract_features(inputfile, start_locus, end_locus):
             return extracted_record
 
         except UnboundLocalError:
-            print("Start gene not found! (Did you make a typo?)")
-            break
-        
+            print("Genes of interest not found on %s" % sequence_id)
+            pass
+
+    print("Start gene not found! (Did you make a typo?)")
     return None
 
 
